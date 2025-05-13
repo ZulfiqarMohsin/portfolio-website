@@ -1,0 +1,729 @@
+/* Base Styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(9, 6, 17); /* Solid black background */
+  color: #cccccc; /* Grey as default text color */
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  position: relative;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  font-size: 16px; /* Base font size for scaling */
+}
+
+/* Enhanced Light Rays Animation */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.068) 0%, rgba(0, 0, 0, 0.384) 70%),
+              radial-gradient(circle, rgba(150, 112, 255, 0.137) 0%, rgba(0, 0, 0, 0.05) 70%);
+  background-size: 300% 300%, 400% 400%;
+  animation: lightRays1 30s linear infinite, lightRays2 40s linear infinite; /* Slower animations */
+  z-index: -1; /* Place behind all content */
+}
+
+@keyframes lightRays1 {
+  0% {
+    background-position: 0% 0%;
+    transform: rotate(0deg);
+  }
+  25% {
+    background-position: 50% 50%;
+    transform: rotate(45deg);
+  }
+  50% {
+    background-position: 100% 100%;
+    transform: rotate(90deg);
+  }
+  75% {
+    background-position: 50% 50%;
+    transform: rotate(135deg);
+  }
+  100% {
+    background-position: 0% 0%;
+    transform: rotate(180deg);
+  }
+}
+@keyframes lightRays2 {
+  0% {
+    background-position: 20% 20%;
+    transform: rotate(0deg);
+  }
+  25% {
+    background-position: 70% 70%;
+    transform: rotate(45deg);
+  }
+  50% {
+    background-position: 120% 120%;
+    transform: rotate(90deg);
+  }
+  75% {
+    background-position: 70% 70%;
+    transform: rotate(135deg);
+  }
+  100% {
+    background-position: 20% 20%;
+    transform: rotate(180deg);
+  }
+}
+
+/* Navigation Bar */
+.navbar {
+  background-color: rgba(10, 9, 19, 0.9);
+  padding: 15px 0;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  overflow: hidden; /* Prevent overflow issues */
+}
+
+.navbar ul {
+  display: flex;
+  justify-content: space-between; /* Center navigation links */
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0 20vh;
+  gap: 20px; /* Add spacing between links */
+  white-space: nowrap; /* Prevent wrapping of navigation links */
+}
+
+.navbar a {
+  color: #00f0ff; /* Cyan */
+  text-decoration: none;
+  font-weight: 600;
+  position: relative; /* Required for the ::after pseudo-element */
+  transition: color 0.3s ease;
+  font-size: 1rem; /* Adjust font size for better readability */
+}
+
+.navbar a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px; /* Position the underline slightly below the text */
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #00ffe0; /* Lighter cyan for the underline */
+  transition: width 0.3s ease; /* Smooth transition for the underline */
+}
+
+.navbar a:hover {
+  color: #00ffe0; /* Lighter cyan on hover */
+}
+
+.navbar a:hover::after {
+  width: 100%; /* Expand the underline to full width on hover */
+}
+
+/* Section Titles */
+section h1, section h2 {
+  color: #00f0ff; /* Cyan */
+  margin-bottom: 20px;
+}
+
+section h1:hover, section h2:hover {
+  color: #00ffe0;
+}
+
+/* Paragraphs */
+section p {
+  color: #cccccc; /* Grey for base text */
+}
+
+section p:hover {
+  color: #00ffe0; /* Cyan on hover */
+}
+
+/* Layout */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 40px 5%; /* Adjust padding for smaller screens */
+  gap: 30px; /* Reduce gap for smaller screens */
+}
+
+.column {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+section {
+  background-color: rgba(10, 9, 19, 0.9);
+  padding: 20px; /* Reduce padding for smaller screens */
+  border-radius: 10px;
+  animation: fadeIn 1s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+}
+
+/* Buttons */
+button {
+  background-color: #4b1e00; /* Dirt brown */
+  color: #ffffff;
+  padding: 12px 25px;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #803300; /* Darker dirt */
+  color: #00ffe0; /* Cyan hover text */
+  transform: scale(1.05);
+}
+
+/* Cards */
+.card {
+  background: rgba(17, 17, 17, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 10px 0;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+  animation: float 3s ease-in-out infinite;
+  transition: transform 0.3s, background-color 0.3s, color 0.3s ease;
+  color: #00ffe0; /* Cyan */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background-color: #1a1a1a;
+  color: #00ffe0;
+}
+
+/* Blockquote */
+blockquote {
+  background: rgba(17, 17, 17, 0.9);
+  padding: 25px;
+  border-left: 5px solid #00f0ff;
+  font-style: italic;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
+  transition: transform 0.3s ease, color 0.3s ease;
+  color: #00f0ff;
+}
+
+blockquote:hover {
+  transform: scale(1.02);
+  color: #00ffe0;
+}
+
+/* Skills and My Services Section */
+.skills, .my-services {
+  display: flex;
+  flex-direction: row; /* Arrange items in a row for larger screens */
+  flex-wrap: wrap; /* Wrap items for smaller screens */
+  justify-content: center; /* Center align the items */
+  gap: 20px; /* Adjust spacing */
+  align-items: center;
+}
+
+.skill-card, .service-card {
+  background: rgba(17, 17, 17, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 170, 255, 0.05); /* Further reduced intensity and opacity */
+  animation: spinningShadow 6s infinite linear; /* Slower spinning shadow animation */
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease; /* Smooth hover effect */
+  color: #00cccc; /* Updated to darker cyan for text */
+  width: 45%; /* Adjust width for smaller screens */
+  text-align: center;
+}
+
+/* Add increased delays for each box */
+.skill-card:nth-child(1), .service-card:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.skill-card:nth-child(2), .service-card:nth-child(2) {
+  animation-delay: 1s;
+}
+
+.skill-card:nth-child(3), .service-card:nth-child(3) {
+  animation-delay: 2s;
+}
+
+.skill-card:nth-child(4), .service-card:nth-child(4) {
+  animation-delay: 3s;
+}
+
+.skill-card:hover, .service-card:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
+  background-color: #0f1a1a; /* Darker background on hover */
+  color: #00ffff; /* Updated to lighter cyan for text on hover */
+}
+
+/* Spinning Shadow Animation */
+@keyframes spinningShadow {
+  0% {
+    box-shadow: 5px 0 10px rgba(0, 170, 255, 0.1), /* Lower opacity */
+                -5px 0 10px rgba(0, 170, 255, 0.1),
+                0 5px 10px rgba(0, 170, 255, 0.1),
+                0 -5px 10px rgba(0, 170, 255, 0.1);
+  }
+  25% {
+    box-shadow: 0 5px 10px rgba(0, 170, 255, 0.15), /* Slightly lighter opacity */
+                0 -5px 10px rgba(0, 170, 255, 0.15),
+                5px 0 10px rgba(0, 170, 255, 0.15),
+                -5px 0 10px rgba(0, 170, 255, 0.15);
+  }
+  50% {
+    box-shadow: -5px 0 10px rgba(0, 170, 255, 0.2), /* Slightly higher opacity */
+                5px 0 10px rgba(0, 170, 255, 0.2),
+                0 -5px 10px rgba(0, 170, 255, 0.2),
+                0 5px 10px rgba(0, 170, 255, 0.2);
+  }
+  75% {
+    box-shadow: 0 -5px 10px rgba(0, 170, 255, 0.15), /* Slightly lighter opacity */
+                0 5px 10px rgba(0, 170, 255, 0.15),
+                -5px 0 10px rgba(0, 170, 255, 0.15),
+                5px 0 10px rgba(0, 170, 255, 0.15);
+  }
+  100% {
+    box-shadow: 5px 0 10px rgba(0, 170, 255, 0.1), /* Lower opacity */
+                -5px 0 10px rgba(0, 170, 255, 0.1),
+                0 5px 10px rgba(0, 170, 255, 0.1),
+                0 -5px 10px rgba(0, 170, 255, 0.1);
+  }
+}
+
+/* Random Movement Animation */
+@keyframes randomMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(10px, -10px);
+  }
+  50% {
+    transform: translate(-10px, 10px);
+  }
+  75% {
+    transform: translate(15px, -15px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(10, 9, 19, 0.9); /* Dark background for the track */
+  border-radius: 5px; /* Rounded corners */
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #00eeff11, #006357c4); /* Cyan gradient for the thumb */
+  border-radius: 5px; /* Rounded corners */
+  
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #00eeff31, #006357); /* Reverse gradient on hover */
+ 
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Stack columns vertically */
+    padding: 20px;
+  }
+
+  .navbar ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap; /* Prevent wrapping of navigation links */
+    overflow-x: auto; /* Allow horizontal scrolling for navigation links if needed */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile devices */
+  }
+
+  .navbar ul::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for navigation on mobile */
+  }
+
+  .navbar a {
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
+  }
+
+  .card {
+    font-size: 0.95em;
+  }
+
+  h1, h2 {
+    font-size: 1.8rem; /* Adjust heading sizes for smaller screens */
+  }
+
+  p {
+    font-size: 1rem; /* Adjust paragraph font size */
+  }
+
+  .column {
+    gap: 20px; /* Reduce gap between sections */
+  }
+
+  section {
+    padding: 15px; /* Reduce padding for smaller screens */
+  }
+
+  #hero h1 {
+    font-size: 2rem; /* Smaller font size for hero heading */
+  }
+
+  #hero p {
+    font-size: 1rem; /* Smaller font size for hero text */
+  }
+
+  #hero button {
+    font-size: 0.8rem; /* Smaller button size */
+    padding: 6px 12px;
+  }
+
+  .skill-card, .service-card {
+    width: 100%; /* Full width for smaller screens */
+  }
+}
+
+/* Responsive Layout for Extra Small Screens */
+@media (max-width: 480px) {
+  h1, h2 {
+    font-size: 1.5rem; /* Further reduce heading sizes */
+  }
+
+  p {
+    font-size: 0.9rem; /* Further reduce paragraph font size */
+  }
+
+  #hero h1 {
+    font-size: 1.8rem; /* Smaller font size for hero heading */
+  }
+
+  #hero p {
+    font-size: 0.9rem; /* Smaller font size for hero text */
+  }
+
+  #hero button {
+    font-size: 0.7rem; /* Smaller button size */
+    padding: 5px 10px;
+  }
+
+  .navbar ul {
+    flex-direction: column; /* Stack navigation links vertically */
+    gap: 10px;
+  }
+
+  .skill-card, .service-card {
+    width: 100%; /* Full width for very small screens */
+  }
+}
+
+/* Project Quote Section */
+#project-quote {
+  position: relative;
+  overflow: hidden; /* Hide content outside the container */
+  height: auto; /* Allow the container to adjust to content height */
+  display: flex;
+  flex-direction: column; /* Stack quote and citation vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  text-align: center; /* Ensure text is centered */
+  padding: 10px;
+  font-size: 1rem; /* Adjust font size for smaller screens */
+}
+
+#project-quote p {
+  opacity: 0;
+  transform: translateY(20px); /* Start slightly below */
+  transition: opacity 1.5s ease, transform 1.5s ease; /* Smooth fade and slide effect */
+  margin: 0; /* Remove default margin */
+}
+
+#project-quote cite {
+  opacity: 0;
+  transform: translateY(20px); /* Start slightly below */
+  transition: opacity 1.5s ease, transform 1.5s ease; /* Smooth fade and slide effect */
+  margin-top: 10px; /* Add spacing between quote and citation */
+  font-style: normal; /* Optional: Make citation text normal if italic is not desired */
+  color: #00cccc; /* Cyan color for the citation */
+}
+
+#project-quote p.active, #project-quote cite.active {
+  opacity: 1;
+  transform: translateY(0); /* Move into view */
+}
+
+#project-quote p.exiting, #project-quote cite.exiting {
+  opacity: 0;
+  transform: translateY(-20px); /* Move out of view above */
+}
+
+/* Hero Section */
+#hero {
+  height: calc(100vh - 10vh); /* Ensure full height on all devices */
+  background: linear-gradient(135deg, #0f172793, #203a43a9, rgba(150, 112, 255, 0.137)); /* Gradient background */
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  padding: 20px;
+}
+
+#hero h1 {
+  font-size: 2.5rem; /* Adjust font size for smaller screens */
+  margin-bottom: 20px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+#hero p {
+  font-size: 1.2rem; /* Adjust font size for smaller screens */
+  margin-bottom: 30px;
+  color: #00ffff;
+}
+
+#hero button {
+  padding: 8px 16px;
+  font-size: 0.9rem; /* Adjust button size */
+  color: #ffffff;
+  background-color: #00cccc;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#hero button:hover {
+  background-color: #008b8b;
+}
+
+/* Typewriter Effect */
+#typewriter {
+  border-right: 2px solid #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  animation: typing 4s steps(30, end), blink 0.5s step-end infinite alternate;
+}
+
+/* Animations */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  from {
+    border-color: transparent;
+  }
+  to {
+    border-color: #ffffff;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Light Theme */
+body.light-mode {
+  background-color: #ffffff; /* Opposite of dark background */
+  color: #000000; /* Opposite of light text */
+}
+
+body.light-mode .navbar {
+  background-color: rgba(255, 255, 255, 0.9); /* Light background for navbar */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+body.light-mode .navbar a {
+  color: #000000; /* Opposite of cyan links */
+}
+
+body.light-mode section {
+  background-color: #f9f9f9; /* Light section background */
+  color: #000000; /* Opposite of light text */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+body.light-mode blockquote {
+  background: #f0f0f0; /* Light background for blockquote */
+  color: #000000; /* Darker text for contrast */
+  border-left: 5px solid #00cccc; /* Keep the cyan border */
+}
+
+body.light-mode button {
+  background-color: #00cccc; /* Cyan button background */
+  color: #ffffff; /* White text for contrast */
+}
+
+body.light-mode button:hover {
+  background-color: #008b8b; /* Darker cyan on hover */
+}
+
+body.light-mode .card {
+  background: rgba(255, 255, 255, 0.9); /* Light card background */
+  color: #000000; /* Opposite of cyan text */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+body.light-mode .card:hover {
+  background-color: #f0f0f0; /* Slightly darker light background */
+  color: #000000; /* Opposite of cyan text */
+}
+
+body.light-mode .skill-card, body.light-mode .service-card {
+  background: rgba(255, 255, 255, 0.9); /* Light background */
+  color: #000000; /* Opposite of cyan text */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+body.light-mode .skill-card:hover, body.light-mode .service-card:hover {
+  background-color: #f0f0f0; /* Slightly darker light background */
+  color: #000000; /* Opposite of cyan text */
+}
+
+body.light-mode #project-quote {
+  background-color: #f9f9f9; /* Light background */
+  color: #000000; /* Opposite of cyan text */
+}
+
+body.light-mode #hero {
+  background: linear-gradient(135deg, #ffffff, #e0e0e0, #cccccc); /* Light gradient background */
+  color: #000000; /* Opposite of light text */
+}
+
+body.light-mode #hero p {
+  color: #000000; /* Opposite of cyan text */
+}
+
+body.light-mode #hero button {
+  background-color: #00cccc; /* Cyan button background */
+  color: #ffffff; /* White text for contrast */
+}
+
+body.light-mode #hero button:hover {
+  background-color: #008b8b; /* Darker cyan on hover */
+}
+
+body.light-mode #theme-toggle {
+  border-color: rgba(0, 0, 0, 0.5); /* Dark border for contrast */
+}
+
+body.light-mode #theme-toggle .icon {
+  color: #ffcc00; /* Yellow for the sun icon */
+}
+
+/* Light Mode - Contact and Project Sections */
+body.light-mode #contact, body.light-mode #projects {
+  color: #000000; /* Black text color */
+}
+
+body.light-mode #contact p, body.light-mode #projects p {
+  color: #000000; /* Black text for paragraphs */
+}
+
+body.light-mode #contact h2, body.light-mode #projects h2 {
+  color: #000000; /* Black text for headings */
+}
+
+body.light-mode #project-quote {
+  background-color: #f9f9f9; /* Light background */
+  color: #000000; /* Black text for quotes */
+}
+
+/* Light Mode - About Me Section */
+body.light-mode #about {
+  color: #000000; /* Black text color */
+}
+
+body.light-mode #about p {
+  color: #000000; /* Black text for paragraphs */
+}
+
+body.light-mode #about h1, body.light-mode #about h2 {
+  color: #000000; /* Black text for headings */
+}
+
+/* Toggle Button */
+#theme-toggle {
+  margin: 0; /* Remove any default margin */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Start with the icon on the left */
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%); /* Center the button horizontally */
+  width: 60px;
+  height: 30px;
+  background-color: transparent; /* Make the button background transparent */
+  border: 2px solid rgba(255, 255, 255, 0.5); /* Add a semi-transparent border */
+  border-radius: 15px;
+  cursor: pointer;
+  padding: 0 5px;
+  transition: background-color 0.5s ease, border-color 0.5s ease, justify-content 0.5s ease; /* Smooth transitions */
+}
+
+#theme-toggle .icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: #ffffff; /* Default icon color */
+  transition: transform 0.5s ease, color 0.5s ease; /* Smooth transitions for rotation and color */
+}
+
+#theme-toggle.light-mode {
+  border-color: rgba(0, 0, 0, 0.5); /* Change border color for light mode */
+  justify-content: flex-end; /* Move the icon to the right */
+  transition: background-color 0.5s ease, border-color 0.5s ease, justify-content 0.5s ease; /* Smooth transitions */
+}
+
+#theme-toggle.light-mode .icon {
+  color: #ffcc00; /* Change to yellow for the sun */
+  transform: rotate(180deg); /* Rotate the icon */
+  transition: transform 0.5s ease, color 0.5s ease; /* Smooth transitions for rotation and color */
+}
