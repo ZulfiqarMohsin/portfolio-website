@@ -32,6 +32,20 @@ body {
   z-index: -1;
   /* Place behind all content */
 }
+.backBox1 {
+  position: fixed;
+  top: 95vw;
+  left: 5%;
+  width: 90%;
+  height: 90vw;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.137) 0%, rgba(0, 0, 0, 0.795) 70%),
+    radial-gradient(circle, rgba(150, 112, 255, 0.137) 0%, rgba(0, 0, 0, 0.274) 70%);
+  background-size: 300% 300%, 400% 400%;
+  animation: lightRays1 15s linear infinite, lightRays2 70s linear infinite;
+  /* Slower animations */
+  z-index: -1;
+  /* Place behind all content */
+}
 
 @keyframes lightRays1 {
   0% {
@@ -84,6 +98,71 @@ body {
   100% {
     background-position: 20% 20%;
     transform: rotate(360deg);
+  }
+}
+
+/* Spinning Background Base */
+.spinning-background {
+  position: fixed;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(0, 0, 0, 1)); /* Full opacity */
+  animation: spin 10s linear infinite, randomMove 15s ease-in-out infinite;
+  z-index: -2; /* Place behind all content */
+}
+
+/* Small Spinning Backgrounds as Boxes */
+.spinning-background.small-1 {
+  width: 100px;
+  height: 100px;
+  top: 10%;
+  left: 20%;
+  background: linear-gradient(135deg, rgba(255, 0, 0, 1), rgba(0, 0, 0, 1)); /* Red tint */
+   
+}
+
+.spinning-background.small-2 {
+  width: 80px;
+  height: 80px;
+  top: 50%;
+  left: 70%;
+  background: linear-gradient(135deg, rgba(0, 255, 0, 1), rgba(0, 0, 0, 1)); /* Green tint */
+  animation-duration: 12s, 7s; /* Slower spin and random movement */
+}
+
+.spinning-background.small-3 {
+  width: 120px;
+  height: 120px;
+  top: 80%;
+  left: 30%;
+  background: linear-gradient(135deg, rgba(0, 0, 255, 1), rgba(0, 0, 0, 1)); /* Blue tint */
+  animation-duration: 15s, 8s; /* Slowest spin and random movement */
+}
+
+/* Spinning Animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Random Movement Animation */
+@keyframes randomMove {
+  0% {
+    transform: translate(0, 0), rotate(0deg);
+  }
+  25% {
+    transform: translate(10px, -10px);
+  }
+  50% {
+    transform: translate(-15px, 15px);
+  }
+  75% {
+    transform: translate(20px, -20px);
+  }
+  100% {
+    transform: translate(0, 0), rotate(360deg);
   }
 }
 
@@ -593,11 +672,11 @@ blockquote:hover {
 @media (max-width: 375px) {
   .navbar ul li a {
 
-    font-size: 0.82rem;
+    font-size: 0.7rem;
   }
 
   .navbar ul {
-    gap: 11px;
+    gap: 7px;
   }
 }
 
@@ -813,7 +892,7 @@ body.light-mode .card {
 }
 
 body.light-mode .card:hover {
-  background-color: #f0f0f0;
+  background-color: #f0f0f081;
   /* Slightly darker light background */
   color: #000000;
   /* Opposite of cyan text */
@@ -821,7 +900,7 @@ body.light-mode .card:hover {
 
 body.light-mode .skill-card,
 body.light-mode .service-card {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgb(240, 240, 240);
   /* Light background */
   color: #000000;
   /* Opposite of cyan text */
@@ -838,14 +917,14 @@ body.light-mode .service-card:hover {
 }
 
 body.light-mode #project-quote {
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   /* Light background */
   color: #000000;
   /* Opposite of cyan text */
 }
 
 body.light-mode #hero {
-  background: linear-gradient(135deg, #ffffff, #e0e0e0, #cccccc);
+  background: linear-gradient(135deg, #797979af, #ffffffe0, #3f3c3c98);
   /* Light gradient background */
   color: #000000;
   /* Opposite of light text */
@@ -975,6 +1054,48 @@ body.light-mode #about h2 {
   /* Rotate the icon */
   transition: transform 0.5s ease, color 0.5s ease;
   /* Smooth transitions for rotation and color */
+}
+
+/* Spinning Box beside Section Headers */
+.spinning-box {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px; /* Space between the box and the header text */
+  background: linear-gradient(135deg, #00f0ff, #006357); /* Cyan gradient */
+  border-radius: 5px; /* Slightly rounded corners */
+  animation: spin 10s linear infinite; /* Spinning animation */
+}
+
+/* Jumping Box beside Section Headers */
+.jumping-box {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px; /* Space between the box and the header text */
+  background: linear-gradient(135deg, #ff5733, #c70039); /* Gradient for jumping box */
+  border-radius: 5px; /* Slightly rounded corners */
+  animation: jump 1.5s ease-in-out infinite; /* Jumping animation */
+}
+
+/* Jumping Animation */
+@keyframes jump {
+  0%, 100% {
+    transform: translateY(0); /* Start and end at the same position */
+  }
+  50% {
+    transform: translateY(-15px); /* Move up */
+  }
+}
+
+/* Spinning Animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /*comming soon
